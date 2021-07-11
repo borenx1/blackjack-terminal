@@ -1,3 +1,6 @@
+# OS and IDE
+.vscode/
+
 # Prerequisites
 *.d
 
