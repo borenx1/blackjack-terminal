@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "card.cpp"
 
 using namespace std;
 
