@@ -1,47 +1,24 @@
+#include "blackjack.h"
 #include <iostream>
 #include <string>
-#include "card.h"
-
-using namespace std;
 
 namespace blackjack {
-    struct BlackjackSettings {
-        double starting_cash;
-        double min_bet;
-        double bet_increment;
-        unsigned int decks;
-        BlackjackSettings(double starting_cash = 1000, double min_bet = 10, double bet_increment = 1, unsigned int decks = 4)
+    BlackjackSettings::BlackjackSettings(double starting_cash, double min_bet, double bet_increment, unsigned int decks)
             : starting_cash(starting_cash), min_bet(min_bet), bet_increment(bet_increment) {}
-    };
 
-    struct State {
-        unsigned int round;
-        int cash;
-        card::Card hand[20];
-        card::Card deck[52 * 20];
-    };
-
-    class Blackjack {
-        public:
-            Blackjack() {}
-
-            Blackjack(BlackjackSettings settings): settings(settings) {}
-
-            void start() {
-                printStartingMessage();
-                string name;
-                cout << "Enter your name:" << endl;
-                cin >> name;
-                cout << "Your name is: " << name << endl;
-            }
-        protected:
-            void printStartingMessage() {
-                cout << "Now playing Blackjack!" << endl;
-                cout << "You start with $" << settings.starting_cash << "." << endl;
-                cout << "The minimum bet is $" << settings.min_bet << "." << endl;
-                cout << "Bets can only be in multiples of $" << settings.bet_increment << "." << endl;
-            }
-        private:
-            BlackjackSettings settings;
-    };
+    Blackjack::Blackjack() {};
+    Blackjack::Blackjack(BlackjackSettings settings): settings(settings) {}
+    void Blackjack::start() {
+        printStartingMessage();
+        std::string name;
+        std::cout << "Enter your name:" << '\n';
+        std::cin >> name;
+        std::cout << "Your name is: " << name << '\n';
+    }
+    void Blackjack::printStartingMessage() {
+        std::cout << "Now playing Blackjack!" << '\n';
+        std::cout << "You start with $" << settings.starting_cash << "." << '\n';
+        std::cout << "The minimum bet is $" << settings.min_bet << "." << '\n';
+        std::cout << "Bets can only be in multiples of $" << settings.bet_increment << "." << '\n';
+    }
 }
