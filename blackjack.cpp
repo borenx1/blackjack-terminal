@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "card.cpp"
+#include "card.h"
 
 using namespace std;
 
