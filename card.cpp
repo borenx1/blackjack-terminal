@@ -3,10 +3,10 @@
 
 namespace card {
     enum class Value {
-        ACE = 1, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING
+        kAce = 1, kTwo, kThree, kFour, kFive, kSix, kSeven, kEight, kNine, kTen, kJack, kQueen, kKing
     };
     enum class Suit {
-        SPADES, HEARTS, CLUBS, DIAMONDS
+        kSpades, kHearts, kClubs, kDiamonds
     };
 
     Card::Card(Value value, Suit suit): value(value), suit(suit) {
@@ -27,43 +27,43 @@ namespace card {
     }
     void Card::setSymbol() {
         switch (value) {
-            case Value::ACE:
+            case Value::kAce:
                 symbol = 'A';
                 break;
-            case Value::TWO:
+            case Value::kTwo:
                 symbol = '2';
                 break;
-            case Value::THREE:
+            case Value::kThree:
                 symbol = '3';
                 break;
-            case Value::FOUR:
+            case Value::kFour:
                 symbol = '4';
                 break;
-            case Value::FIVE:
+            case Value::kFive:
                 symbol = '5';
                 break;
-            case Value::SIX:
+            case Value::kSix:
                 symbol = '6';
                 break;
-            case Value::SEVEN:
+            case Value::kSeven:
                 symbol = '7';
                 break;
-            case Value::EIGHT:
+            case Value::kEight:
                 symbol = '8';
                 break;
-            case Value::NINE:
+            case Value::kNine:
                 symbol = '9';
                 break;
-            case Value::TEN:
+            case Value::kTen:
                 symbol = 'T';
                 break;
-            case Value::JACK:
+            case Value::kJack:
                 symbol = 'J';
                 break;
-            case Value::QUEEN:
+            case Value::kQueen:
                 symbol = 'Q';
                 break;
-            case Value::KING:
+            case Value::kKing:
                 symbol = 'K';
                 break;
             default:
@@ -74,59 +74,59 @@ namespace card {
         std::string valueString;
         std::string suitString;
         switch (value) {
-            case Value::ACE:
+            case Value::kAce:
                 valueString = "Ace";
                 break;
-            case Value::TWO:
+            case Value::kTwo:
                 valueString = "Two";
                 break;
-            case Value::THREE:
+            case Value::kThree:
                 valueString = "Three";
                 break;
-            case Value::FOUR:
+            case Value::kFour:
                 valueString = "Four";
                 break;
-            case Value::FIVE:
+            case Value::kFive:
                 valueString = "Five";
                 break;
-            case Value::SIX:
+            case Value::kSix:
                 valueString = "Six";
                 break;
-            case Value::SEVEN:
+            case Value::kSeven:
                 valueString = "Seven";
                 break;
-            case Value::EIGHT:
+            case Value::kEight:
                 valueString = "Eight";
                 break;
-            case Value::NINE:
+            case Value::kNine:
                 valueString = "Nine";
                 break;
-            case Value::TEN:
+            case Value::kTen:
                 valueString = "Ten";
                 break;
-            case Value::JACK:
+            case Value::kJack:
                 valueString = "Jack";
                 break;
-            case Value::QUEEN:
+            case Value::kQueen:
                 valueString = "Queen";
                 break;
-            case Value::KING:
+            case Value::kKing:
                 valueString = "King";
                 break;
             default:
                 throw "Card value unknown";
         }
         switch (suit) {
-            case Suit::SPADES:
+            case Suit::kSpades:
                 suitString = "Spades";
                 break;
-            case Suit::HEARTS:
+            case Suit::kHearts:
                 suitString = "Hearts";
                 break;
-            case Suit::CLUBS:
+            case Suit::kClubs:
                 suitString = "Clubs";
                 break;
-            case Suit::DIAMONDS:
+            case Suit::kDiamonds:
                 suitString = "Diamonds";
                 break;
             default:
