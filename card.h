@@ -24,6 +24,18 @@ namespace card {
 
     char mapSymbol(Value value);
     std::string mapCardName(Suit suit, Value value);
+
+    class Shoe {
+        private:
+            unsigned int num_decks;
+            // Card cards[52 * 20];
+        public:
+            Shoe(unsigned int num_decks);
+            void refresh();
+            void shuffle();
+            Card draw();
+            int count();
+    };
 }
 
 #endif

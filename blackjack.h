@@ -16,7 +16,7 @@ namespace blackjack {
         unsigned int round;
         int cash;
         card::Card hand[20];
-        card::Card deck[52 * 20];
+        card::Shoe shoe;
     };
 
     class Blackjack {

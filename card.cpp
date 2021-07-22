@@ -1,19 +1,25 @@
 #include "card.h"
+#include <iostream>
 
 namespace card {
     Card::Card(Value value, Suit suit): value(value), suit(suit) {}
+
     Value Card::getValue() {
         return value;
     }
+
     Suit Card::getSuit() {
         return suit;
     }
+
     char Card::getSymbol() {
         return mapSymbol(value);
     }
+
     std::string Card::getName() {
         return mapCardName(suit, value);
     }
+
     char mapSymbol(Value value) {
         switch (value) {
             case Value::kAce:
@@ -46,6 +52,7 @@ namespace card {
                 throw "Card value unknown";
         }
     }
+
     std::string mapCardName(Suit suit, Value value) {
         std::string valueString;
         std::string suitString;
@@ -110,4 +117,27 @@ namespace card {
         }
         return valueString + " of " + suitString;
     }
+
+    Shoe::Shoe(unsigned int num_decks): num_decks(num_decks) {
+        // TODO initialize cards
+        // cards = [];
+    }
+
+    void Shoe::refresh() {
+        std::cout << "Refresh" << '\n';
+    }
+
+    void shuffle() {
+        std::cout << "Shuffle" << '\n';
+    }
+
+    Card draw() {
+        std::cout << "Draw" << '\n';
+        return Card(Value::kAce, Suit::kSpades);
+    }
+
+    int count() {
+        std::cout << "Count" << '\n';
+        return 1;
+    };
 }
