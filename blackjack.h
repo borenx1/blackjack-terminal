@@ -5,12 +5,12 @@
 #include <string>
 
 namespace blackjack {
-    struct BlackjackSettings {
+    struct GameSettings {
         double starting_cash;
         double min_bet;
         double bet_increment;
         unsigned int decks;
-        BlackjackSettings(double starting_cash = 1000, double min_bet = 10, double bet_increment = 1, unsigned int decks = 4);
+        GameSettings(double starting_cash = 1000, double min_bet = 10, double bet_increment = 1, unsigned int decks = 4);
     };
 
     struct State {
@@ -22,12 +22,12 @@ namespace blackjack {
 
     class Blackjack {
         private:
-            BlackjackSettings settings;
+            GameSettings settings;
         protected:
             void printStartingMessage();
         public:
             Blackjack();
-            Blackjack(BlackjackSettings settings);
+            Blackjack(GameSettings settings);
             void start();
     };
 }
