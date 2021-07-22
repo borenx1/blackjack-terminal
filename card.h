@@ -3,18 +3,17 @@
 #include <string>
 
 namespace card {
-    enum class Value;
-    enum class Suit;
+    enum class Value {
+        kAce = 1, kTwo, kThree, kFour, kFive, kSix, kSeven, kEight, kNine, kTen, kJack, kQueen, kKing
+    };
+    enum class Suit {
+        kSpades, kHearts, kClubs, kDiamonds
+    };
 
     class Card {
         private:
             Value value;
             Suit suit;
-            char symbol;
-            std::string name;
-        protected:
-            void setSymbol();
-            void setName();
         public:
             Card(Value value, Suit suit);
             Value getValue();
@@ -22,6 +21,9 @@ namespace card {
             char getSymbol();
             std::string getName();
     };
+
+    char mapSymbol(Value value);
+    std::string mapCardName(Suit suit, Value value);
 }
 
 #endif

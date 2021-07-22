@@ -1,18 +1,7 @@
 #include "card.h"
-#include <string>
 
 namespace card {
-    enum class Value {
-        kAce = 1, kTwo, kThree, kFour, kFive, kSix, kSeven, kEight, kNine, kTen, kJack, kQueen, kKing
-    };
-    enum class Suit {
-        kSpades, kHearts, kClubs, kDiamonds
-    };
-
-    Card::Card(Value value, Suit suit): value(value), suit(suit) {
-        setSymbol();
-        setName();
-    }
+    Card::Card(Value value, Suit suit): value(value), suit(suit) {}
     Value Card::getValue() {
         return value;
     }
@@ -20,57 +9,44 @@ namespace card {
         return suit;
     }
     char Card::getSymbol() {
-        return symbol;
+        return mapSymbol(value);
     }
     std::string Card::getName() {
-        return name;
+        return mapCardName(suit, value);
     }
-    void Card::setSymbol() {
+    char mapSymbol(Value value) {
         switch (value) {
             case Value::kAce:
-                symbol = 'A';
-                break;
+                return 'A';
             case Value::kTwo:
-                symbol = '2';
-                break;
+                return '2';
             case Value::kThree:
-                symbol = '3';
-                break;
+                return '3';
             case Value::kFour:
-                symbol = '4';
-                break;
+                return '4';
             case Value::kFive:
-                symbol = '5';
-                break;
+                return '5';
             case Value::kSix:
-                symbol = '6';
-                break;
+                return '6';
             case Value::kSeven:
-                symbol = '7';
-                break;
+                return '7';
             case Value::kEight:
-                symbol = '8';
-                break;
+                return '8';
             case Value::kNine:
-                symbol = '9';
-                break;
+                return '9';
             case Value::kTen:
-                symbol = 'T';
-                break;
+                return 'T';
             case Value::kJack:
-                symbol = 'J';
-                break;
+                return 'J';
             case Value::kQueen:
-                symbol = 'Q';
-                break;
+                return 'Q';
             case Value::kKing:
-                symbol = 'K';
-                break;
+                return 'K';
             default:
                 throw "Card value unknown";
         }
     }
-    void Card::setName() {
+    std::string mapCardName(Suit suit, Value value) {
         std::string valueString;
         std::string suitString;
         switch (value) {
@@ -132,6 +108,6 @@ namespace card {
             default:
                 throw "Card suit unknown";
         }
-        name =  valueString + " of " + suitString;
+        return valueString + " of " + suitString;
     }
 }
