@@ -6,11 +6,10 @@
 
 namespace blackjack {
     struct GameSettings {
-        double starting_cash;
-        double min_bet;
-        double bet_increment;
-        unsigned int decks;
-        GameSettings(double starting_cash = 1000, double min_bet = 10, double bet_increment = 1, unsigned int decks = 4);
+        double starting_cash{1000};
+        double min_bet{10};
+        double bet_increment{1};
+        unsigned int decks{4};
     };
 
     struct State {

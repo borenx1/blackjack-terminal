@@ -3,9 +3,6 @@
 #include <string>
 
 namespace blackjack {
-    GameSettings::GameSettings(double starting_cash, double min_bet, double bet_increment, unsigned int decks)
-            : starting_cash(starting_cash), min_bet(min_bet), bet_increment(bet_increment) {}
-
     Blackjack::Blackjack() {};
     Blackjack::Blackjack(GameSettings settings): settings(settings) {}
     void Blackjack::start() {
