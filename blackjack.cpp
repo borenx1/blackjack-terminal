@@ -4,7 +4,7 @@
 
 namespace blackjack {
     Blackjack::Blackjack() {};
-    Blackjack::Blackjack(GameSettings settings): settings(settings) {}
+    Blackjack::Blackjack(Settings settings): settings(settings) {}
     void Blackjack::start() {
         printStartingMessage();
         std::string name;

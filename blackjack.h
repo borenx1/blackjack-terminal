@@ -1,32 +1,32 @@
 #ifndef BLACKJACK_H
 #define BLACKJACK_H
 #include "card.h"
-#include <iostream>
 #include <string>
+#include <vector>
 
 namespace blackjack {
-    struct GameSettings {
+    struct Settings {
         double starting_cash{1000};
         double min_bet{10};
         double bet_increment{1};
-        unsigned int decks{4};
+        int decks{4};
     };
 
     struct State {
-        unsigned int round;
-        int cash;
-        card::Card hand[20];
+        int round{};
+        double cash{};
+        std::vector<card::Card> hand{};
         card::Shoe shoe;
     };
 
     class Blackjack {
         private:
-            GameSettings settings;
+            Settings settings;
         protected:
             void printStartingMessage();
         public:
             Blackjack();
-            Blackjack(GameSettings settings);
+            Blackjack(Settings settings);
             void start();
     };
 }
