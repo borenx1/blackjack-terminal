@@ -4,7 +4,7 @@
 #include <vector>
 
 namespace card {
-    enum class Value {
+    enum class Rank {
         kAce = 1, kTwo, kThree, kFour, kFive, kSix, kSeven, kEight, kNine, kTen, kJack, kQueen, kKing
     };
     enum class Suit {
@@ -13,19 +13,19 @@ namespace card {
 
     class Card {
         private:
-            Value value;
+            Rank rank;
             Suit suit;
         public:
             // TODO const arguments
-            Card(Value value, Suit suit);
-            Value getValue();
+            Card(Rank rank, Suit suit);
+            Rank getRank();
             Suit getSuit();
             char getSymbol();
             std::string getName();
     };
 
-    char mapSymbol(Value value);
-    std::string mapCardName(Suit suit, Value value);
+    char mapSymbol(Rank rank);
+    std::string mapCardName(Suit suit, Rank rank);
 
     class Shoe {
         private:

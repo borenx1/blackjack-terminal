@@ -2,10 +2,10 @@
 #include <iostream>
 
 namespace card {
-    Card::Card(Value value, Suit suit): value(value), suit(suit) {}
+    Card::Card(Rank rank, Suit suit): rank(rank), suit(suit) {}
 
-    Value Card::getValue() {
-        return value;
+    Rank Card::getRank() {
+        return rank;
     }
 
     Suit Card::getSuit() {
@@ -13,91 +13,91 @@ namespace card {
     }
 
     char Card::getSymbol() {
-        return mapSymbol(value);
+        return mapSymbol(rank);
     }
 
     std::string Card::getName() {
-        return mapCardName(suit, value);
+        return mapCardName(suit, rank);
     }
 
-    char mapSymbol(Value value) {
-        switch (value) {
-            case Value::kAce:
+    char mapSymbol(Rank rank) {
+        switch (rank) {
+            case Rank::kAce:
                 return 'A';
-            case Value::kTwo:
+            case Rank::kTwo:
                 return '2';
-            case Value::kThree:
+            case Rank::kThree:
                 return '3';
-            case Value::kFour:
+            case Rank::kFour:
                 return '4';
-            case Value::kFive:
+            case Rank::kFive:
                 return '5';
-            case Value::kSix:
+            case Rank::kSix:
                 return '6';
-            case Value::kSeven:
+            case Rank::kSeven:
                 return '7';
-            case Value::kEight:
+            case Rank::kEight:
                 return '8';
-            case Value::kNine:
+            case Rank::kNine:
                 return '9';
-            case Value::kTen:
+            case Rank::kTen:
                 return 'T';
-            case Value::kJack:
+            case Rank::kJack:
                 return 'J';
-            case Value::kQueen:
+            case Rank::kQueen:
                 return 'Q';
-            case Value::kKing:
+            case Rank::kKing:
                 return 'K';
             default:
-                throw "Card value unknown";
+                throw "Card rank unknown";
         }
     }
 
-    std::string mapCardName(Suit suit, Value value) {
-        std::string valueString;
+    std::string mapCardName(Suit suit, Rank rank) {
+        std::string rankString;
         std::string suitString;
-        switch (value) {
-            case Value::kAce:
-                valueString = "Ace";
+        switch (rank) {
+            case Rank::kAce:
+                rankString = "Ace";
                 break;
-            case Value::kTwo:
-                valueString = "Two";
+            case Rank::kTwo:
+                rankString = "Two";
                 break;
-            case Value::kThree:
-                valueString = "Three";
+            case Rank::kThree:
+                rankString = "Three";
                 break;
-            case Value::kFour:
-                valueString = "Four";
+            case Rank::kFour:
+                rankString = "Four";
                 break;
-            case Value::kFive:
-                valueString = "Five";
+            case Rank::kFive:
+                rankString = "Five";
                 break;
-            case Value::kSix:
-                valueString = "Six";
+            case Rank::kSix:
+                rankString = "Six";
                 break;
-            case Value::kSeven:
-                valueString = "Seven";
+            case Rank::kSeven:
+                rankString = "Seven";
                 break;
-            case Value::kEight:
-                valueString = "Eight";
+            case Rank::kEight:
+                rankString = "Eight";
                 break;
-            case Value::kNine:
-                valueString = "Nine";
+            case Rank::kNine:
+                rankString = "Nine";
                 break;
-            case Value::kTen:
-                valueString = "Ten";
+            case Rank::kTen:
+                rankString = "Ten";
                 break;
-            case Value::kJack:
-                valueString = "Jack";
+            case Rank::kJack:
+                rankString = "Jack";
                 break;
-            case Value::kQueen:
-                valueString = "Queen";
+            case Rank::kQueen:
+                rankString = "Queen";
                 break;
-            case Value::kKing:
-                valueString = "King";
+            case Rank::kKing:
+                rankString = "King";
                 break;
             default:
-                throw "Card value unknown";
+                throw "Card rank unknown";
         }
         switch (suit) {
             case Suit::kSpades:
@@ -115,7 +115,7 @@ namespace card {
             default:
                 throw "Card suit unknown";
         }
-        return valueString + " of " + suitString;
+        return rankString + " of " + suitString;
     }
 
     Shoe::Shoe(int num_decks): num_decks(num_decks) {
@@ -129,8 +129,9 @@ namespace card {
         for (int i = 0; i < num_decks; i++) {
             for (const auto& suit : {Suit::kSpades, Suit::kHearts, Suit::kClubs, Suit::kDiamonds}) {
                 for (int rank = 1; rank <= 13; rank++) {
+                    // TODO fill deck
                     // cards.push_back(Card(static_cast<Value>(rank), suit));
-                    cards.push_back(Card(Value::kAce, suit));
+                    cards.push_back(Card(Rank::kAce, suit));
                 }
             }
         }
@@ -145,7 +146,7 @@ namespace card {
 
     Card Shoe::draw() {
         std::cout << "Draw" << '\n';
-        return Card(Value::kAce, Suit::kSpades);
+        return Card(Rank::kAce, Suit::kSpades);
     }
 
     Card Shoe::at(const std::size_t index) {
