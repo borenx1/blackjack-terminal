@@ -1,6 +1,7 @@
 #ifndef CARD_H
 #define CARD_H
 #include <string>
+#include <vector>
 
 namespace card {
     enum class Value {
@@ -15,6 +16,7 @@ namespace card {
             Value value;
             Suit suit;
         public:
+            // TODO const arguments
             Card(Value value, Suit suit);
             Value getValue();
             Suit getSuit();
@@ -27,14 +29,20 @@ namespace card {
 
     class Shoe {
         private:
-            unsigned int num_decks;
-            // Card cards[52 * 20];
+            int num_decks;
+            std::vector<Card> cards;
         public:
-            Shoe(unsigned int num_decks);
-            void refresh();
+            Shoe(int num_decks = 2);
+            /**
+             * Refill the shoe with cards and optionally shuffle the deck
+             * 
+             * @param shuffle Shuffle the shoe after refilling. Defaults to true.
+             */
+            void refresh(bool shuffle = true);
             void shuffle();
             Card draw();
-            int count();
+            Card at(const std::size_t index);
+            std::size_t count();
     };
 }
 

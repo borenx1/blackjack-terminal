@@ -118,26 +118,41 @@ namespace card {
         return valueString + " of " + suitString;
     }
 
-    Shoe::Shoe(unsigned int num_decks): num_decks(num_decks) {
-        // TODO initialize cards
-        // cards = [];
+    Shoe::Shoe(int num_decks): num_decks(num_decks) {
+        if (num_decks < 1) {
+            throw "Number of decks in shoe must be greater than 0";
+        }
     }
 
-    void Shoe::refresh() {
-        std::cout << "Refresh" << '\n';
+    void Shoe::refresh(bool shuffle) {
+        cards = {};
+        for (int i = 0; i < num_decks; i++) {
+            for (const auto& suit : {Suit::kSpades, Suit::kHearts, Suit::kClubs, Suit::kDiamonds}) {
+                for (int rank = 1; rank <= 13; rank++) {
+                    // cards.push_back(Card(static_cast<Value>(rank), suit));
+                    cards.push_back(Card(Value::kAce, suit));
+                }
+            }
+        }
+        if (shuffle) {
+            this->shuffle();
+        }
     }
 
-    void shuffle() {
+    void Shoe::shuffle() {
         std::cout << "Shuffle" << '\n';
     }
 
-    Card draw() {
+    Card Shoe::draw() {
         std::cout << "Draw" << '\n';
         return Card(Value::kAce, Suit::kSpades);
     }
 
-    int count() {
-        std::cout << "Count" << '\n';
-        return 1;
+    Card Shoe::at(const std::size_t index) {
+        return cards.at(index);
+    }
+
+    std::size_t Shoe::count() {
+        return cards.size();
     };
 }

@@ -3,14 +3,32 @@
 #include <string>
 
 namespace blackjack {
-    Blackjack::Blackjack() {};
-    Blackjack::Blackjack(Settings settings): settings(settings) {}
+    Blackjack::Blackjack() {
+        initState();
+    };
+    Blackjack::Blackjack(Settings settings): settings(settings) {
+        initState();
+    }
     void Blackjack::start() {
         printStartingMessage();
         std::string name;
         std::cout << "Enter your name:" << '\n';
         std::cin >> name;
         std::cout << "Your name is: " << name << '\n';
+    }
+    void Blackjack::restart() {
+        std::cout << '\n' << "New game" << '\n';
+        initState();
+        start();
+    }
+    void Blackjack::initState() {
+        // Create new state struct
+        State newState{};
+        newState.cash = settings.starting_cash;
+        newState.shoe = card::Shoe(settings.decks);
+        state = newState;
+        // Init shoe
+        state.shoe.refresh();
     }
     void Blackjack::printStartingMessage() {
         std::cout << "Now playing Blackjack!" << '\n';

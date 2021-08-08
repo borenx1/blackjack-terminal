@@ -13,21 +13,24 @@ namespace blackjack {
     };
 
     struct State {
-        int round{};
+        int round{1};
         double cash{};
         std::vector<card::Card> hand{};
-        card::Shoe shoe;
+        card::Shoe shoe{};
     };
 
     class Blackjack {
         private:
             Settings settings;
+            State state;
         protected:
+            void initState();
             void printStartingMessage();
         public:
             Blackjack();
             Blackjack(Settings settings);
             void start();
+            void restart();
     };
 }
 
