@@ -5,17 +5,13 @@
 
 namespace blackjack {
 
-Blackjack::Blackjack(Settings settings): settings_(settings) {
-    initState();
-}
+Blackjack::Blackjack(Settings settings) : settings_(settings) {}
 
 void Blackjack::start() {
     // Pre-game setup and messages
     printStartingMessage();
-    std::string name;
-    std::cout << "Enter your name:" << '\n';
-    std::cin >> name;
-    std::cout << "Your name is: " << name << '\n';
+    generateSettings();
+    initState();
 
     // Game loop
     endGame_ = false;
@@ -25,12 +21,15 @@ void Blackjack::start() {
         std::cin >> placeholder;
         if (placeholder == "quit") {
             endGame_ = true;
+        } else if (placeholder == "settings" || placeholder == "setting") {
+            displaySettings();
+        } else {
+            state_.round++;
         }
-        state_.round++;
     }
 
     // Post-game messages
-    std::cout << "Goodbye!" << '\n';
+    printEndingMessage();
 }
 
 void Blackjack::restart() {
@@ -51,9 +50,27 @@ void Blackjack::initState() {
 
 void Blackjack::printStartingMessage() {
     std::cout << "Now playing Blackjack!" << '\n';
+}
+
+void Blackjack::printEndingMessage() {
+    std::cout << "Goodbye!" << '\n';
+}
+
+void Blackjack::generateSettings() {
+    // Init settings to default.
+    Settings settings{};
+    // Get settings from user input.
+    std::cout << "Set the minimum bet ($) (Defaults to " << settings.min_bet << "):" << '\n';
+    std::cout << "Set the bet increment ($) (Defaults to " << settings.bet_increment << "):" << '\n';
+    std::cout << "Set the starting cash ($) (Defaults to " << settings.starting_cash << "):" << '\n';
+    std::cout << "Set the number of decks to use (1 - 20) (Defaults to " << settings.decks << "):" << '\n';
+}
+
+void Blackjack::displaySettings() {
     std::cout << "You start with $" << settings_.starting_cash << "." << '\n';
     std::cout << "The minimum bet is $" << settings_.min_bet << "." << '\n';
     std::cout << "Bets can only be in multiples of $" << settings_.bet_increment << "." << '\n';
+    std::cout << "The shoe consists of " << settings_.decks << " decks." << '\n';
 }
 
 }

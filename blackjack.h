@@ -28,7 +28,22 @@ class Blackjack {
         State state_;
     protected:
         void initState();
+        /**
+         * Prints the messages at the beginning of a games.
+         */
         void printStartingMessage();
+        /**
+         * Prints the messages at the end of a game.
+         */
+        void printEndingMessage();
+        /**
+         * Sets the game settings from the player.
+         */
+        void generateSettings();
+        /**
+         * Displays the game settings to the player.
+         */
+        void displaySettings();
     public:
         Blackjack(Settings settings = Settings{});
         /**
