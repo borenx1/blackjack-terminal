@@ -23,6 +23,7 @@ struct State {
 
 class Blackjack {
     private:
+        bool endGame_{ true };
         Settings settings_;
         State state_;
     protected:
@@ -30,6 +31,10 @@ class Blackjack {
         void printStartingMessage();
     public:
         Blackjack(Settings settings = Settings{});
+        /**
+         * The main function to run the game. Calling this function will play
+         * the game on a loop until the game is ended.
+         */
         void start();
         void restart();
 };

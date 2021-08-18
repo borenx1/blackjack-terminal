@@ -10,11 +10,27 @@ Blackjack::Blackjack(Settings settings): settings_(settings) {
 }
 
 void Blackjack::start() {
+    // Pre-game setup and messages
     printStartingMessage();
     std::string name;
     std::cout << "Enter your name:" << '\n';
     std::cin >> name;
     std::cout << "Your name is: " << name << '\n';
+
+    // Game loop
+    endGame_ = false;
+    while (!endGame_) {
+        std::cout << "Round " << state_.round << '\n';
+        std::string placeholder{};
+        std::cin >> placeholder;
+        if (placeholder == "quit") {
+            endGame_ = true;
+        }
+        state_.round++;
+    }
+
+    // Post-game messages
+    std::cout << "Goodbye!" << '\n';
 }
 
 void Blackjack::restart() {
